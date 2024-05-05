@@ -1,15 +1,21 @@
 
 import { useState } from 'react'
+import InvoiceForm from './CreateInvoice.jsx/InvoiceForm'
 function Invoice() {
+  
     const [search,setSearch] = useState()
+    const openInvoiceForm = ()=>{
+      document.getElementById('formList').style.display = "flex"
+    }
   return (
-    <div className='m-5 flex flex-col p-2  justify-center item-center'>
-          <div className='flex text-xl text-white p-2 bg-pink-700 w-full'>
+    <>
+     <div className='m-5 flex flex-col p-2  justify-center item-center'>
+          <div className='flex text-xl text-white p-2 bg-rose-700 w-full'>
               <h4>Invoice</h4>
           </div>
           <div className='flex justify-between w-full bg-rose-100'>
             <div className='flex'>
-                <button className='px-3 py-1 text-white m-2 bg-orange-500 rounded-lg'>
+                <button onClick={openInvoiceForm} className='px-3 py-1 text-white m-2 bg-orange-500 rounded-lg'>
                   Create
                 </button>
             </div>
@@ -46,7 +52,17 @@ function Invoice() {
               </table>
 
             </div>
+
       </div>
+      <div className='flex justify-center'>
+      <div id='formList' style={{display:'none'}} className='z-10 flex w-3/5 justify-center item-center items-center m-5 '>
+                  <InvoiceForm/>
+    
+                </div>
+      </div>
+                 
+    </>
+   
   )
 }
 
