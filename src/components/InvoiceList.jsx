@@ -4,8 +4,17 @@ import InvoiceForm from './CreateInvoice.jsx/InvoiceForm'
 function Invoice() {
   
     const [search,setSearch] = useState()
+    const [user,setUser] = useState([])
+    const [isinvoiceOpen,setIsInvoiceOpen] = useState(false)
+    console.log(user)
     const openInvoiceForm = ()=>{
-      document.getElementById('formList').style.display = "flex"
+      setIsInvoiceOpen(true)
+    
+    }
+    const acceptUser = (name,value)=>{
+      console.log(name,value)
+      setUser(prev=>[...prev,{name: value}])
+      
     }
   return (
     <>
@@ -54,12 +63,14 @@ function Invoice() {
             </div>
 
       </div>
+      {isinvoiceOpen &&
       <div className='flex justify-center'>
-      <div id='formList' style={{display:'none'}} className='z-10 flex w-3/5 justify-center item-center items-center m-5 '>
-                  <InvoiceForm/>
+      <div id='formList'  className='z-10 flex w-3/5 justify-center item-center items-center m-5 '>
+                  <InvoiceForm acceptUser={acceptUser} user={user}/>
     
                 </div>
       </div>
+      }
                  
     </>
    
